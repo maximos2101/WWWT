@@ -14,5 +14,75 @@
     </video>
 
 
+
+    <h1>Form: </h1>
+
+    <form method="POST">
+        <p>
+            <label>Name: </label>
+            <input type="text" name="customer" required>
+        </p>
+        <p>
+            <label>Phone: </label>
+            <input type="tel" name="phone" required>
+        </p>
+        <p>
+            <label>Email: </label>
+            <input type="email" name="email">
+        </p>
+
+        <fieldset>
+            <legend>Which taxi do you require?</legend>
+
+            <p>
+                <input type="radio" name="taxi" required value="car">Car
+            </p>
+            <p>
+                <input type="radio" name="taxi" required value="van">Van
+            </p>
+            <p>
+                <input type="radio" name="taxi" required value="tuktuk">TukTuk
+            </p>
+        </fieldset>
+
+        <fieldset>
+            <legend>Extras</legend>
+
+            <p>
+                <input type="checkbox" name="extras" value="baby">Baby Seat
+            </p>
+            <p>
+                <input type="checkbox" name="extras" value="wheelchair">Wheelchair
+            </p>
+        </fieldset>
+
+        <p>
+            <label>Pickup place</label>
+
+            <select name="pickup" id="pickup">
+                <option value="" selected>Select one</option>
+                <option value="office">Office</option>
+                <option value="hall">Hall</option>
+                <option value="home">Home</option>
+            </select>
+        </p>
+
+        <p>
+            <label>Drop off place</label>
+            <input type="text" name="dropoff" required list="destinations">
+
+            <datalist id="destinations">
+                <option value="Airport"></option>
+                <option value="Beach"></option>
+                <option value="Hotel"></option>
+            </datalist>
+        </p>
+
+        <p>
+            <button>Submit information</button>
+        </p>
+
+    </form>
+
 </body>
 </html>
