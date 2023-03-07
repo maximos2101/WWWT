@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe</title>
+</head>
+<body onload="displayBoard()">
+    <canvas id="board" width="600" height="600" onclick="process(event)">
+    </canvas>
+</body>
+
+<script type="text/javascript">
+    var playerX = "X";
+    var playerO = "O";
+    var start = true;
+    var context, width, height;
+
+    function displayBoard() {
+        var board = document.getElementById('board');
+
+        width = board.width;
+        height = board.height;
+        context = board.getContext('2d');
+
+        context.beginPath();
+        context.strokeStyle = '#000';
+        context.lineWidth = 4;
+
+        context.moveTo(width / 3, 0);
+        context.lineTo(width / 3, height);
+
+        context.moveTo(2 * width / 3, 0);
+        context.lineTo(2 * width / 3, height);
+
+        context.moveTo(0, height / 3);
+        context.lineTo(width, height / 3);
+
+        context.moveTo(0, 2 * height / 3);
+        context.lineTo(width, 2 * height / 3);
+
+        context.stroke();
+        context.closePath();
+
+        if (start) {
+            var position = Math.floor(Math.random() * 9);
+            markPlayer(1 << position, 'O');
+            start = false;
+        }
+        else {
+            start = true;
+        }
+    }
+
+    function markPlayer(position, turn) {
+        var bit = 1;
+        var posX = 0, posY = 0;
+
+        while ((position & bit) == 0) {
+            bit = bit << 1;
+            posX++;
+
+            if (posX > 2) {
+                posX = 0;
+                posY++;
+            }
+        }
+
+        if (turn == 'O') {
+            playerO = playerO | bit;
+            drawPlayer(posX, posY, 'O');
+        }
+        else {
+            playerX = playerX | bit;
+            drawPlayer(posX, posY, 'X');
+        }
+
+    }
+
+    function drawPlayer(x, y, player) {
+        context.beginPath();
+
+        context.lineWidth = 4;
+        var xMargin = (width / 3) * 0.1;
+        var yMargin = (height / 3) * 0.1;
+
+        var startX = x * (width / 3) + xMargin;
+        var startY = y * (height / 3) + yMargin;
+
+        var endX = (x + 1) * (width / 3) - xMargin * 2;
+        var endY = (y + 1) * (height / 3) - yMargin * 2;
+
+        if (player == 'X') {
+            context.strokeStyle = '#f00';
+            context.moveTo(startX, startY);
+            context.lineTo(endX, endY);
+            context.moveTo(startX, endY);
+            context.lineTo(endX, startY);
+
+        }
+        else {
+            context.strokeStyle = '#00f';
+            var centerX = startX + (endX - startX) / 2;
+            var centerY = startY + (endY - startY) / 2;
+            var radius = (endX - startX) / 2;
+
+            context.arc(centerX, centerY, radius, 0, 2 * Math.PI);
+        }
+
+        context.stroke();
+        context.closePath();
+    }
+
+    function process(e) {
+        var y = Math.floor(e.clientY / (height / 3));
+        var x = Math.floor(e.clientX / (width / 3));
+        var bit = (1 << x + (y * 3));
+
+        if (isEmpty(playerX, playerO, bit)) {
+            markPlayer(bit, 'X');
+
+
+
+
+            
+        }
+
+
+        
+        //markPlayer(bit, 'O');
+
+    }
+
+    function isEmpty(playerX, playerO, bit) {
+        return ((playerX & bit) == 0) && ((playerO & bit) == 0);
+    }
+
+</script>
+
+
+</html>
