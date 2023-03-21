@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS woop</title>
+
+    <link href="styles/light.css" rel="stylesheet" type="text/css"/>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="scripts/functions.js"></script>
+</head>
+<body>
+    <h1>My first CSS example.</h1>
+    <p>This is a very interesting paragraph.</p>
+
+    <h2 id="C1">Chapter 1</h2>
+    <h2 id="C2">Chapter 2</h2>
+    <h2 id="C3">Chapter 3</h2>
+    <h2 id="C4">Chapter 4</h2>
+
+    <label for="Maths">Maths</label>
+    <meter class="grade" id="Maths" value="8" min="0" max="10"></meter>
+    <br/>
+
+    <label for="Chemistry">Chemistry</label>
+    <meter class="grade" id="Chemistry" value="7" min="0" max="10"></meter>
+    <br/>
+
+    <label for="Physics">Physics</label>
+    <meter class="grade" id="Physics" value="5" min="0" max="10"></meter>
+    <br/>
+
+    <p>
+        <label for="Name">Name</label>
+        <input type="text" id="Name">
+    </p>
+
+    <p>
+        <label for="Phone">Phone</label>
+        <input type="tel" id="Phone">
+    </p>
+
+    <button onclick="flipTheme(other)">Switch Theme</button>
+  <!---  <button onclick="flipTheme('light')">Switch to Light Theme</button> --->
+
+</body>
+</html>
