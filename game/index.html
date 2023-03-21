@@ -12,8 +12,8 @@
 </body>
 
 <script type="text/javascript">
-    var playerX = "X";
-    var playerO = "O";
+    var playerX = 'X';
+    var playerO = 'O';
     var start = true;
     var context, width, height;
 
@@ -54,6 +54,8 @@
     }
 
     function markPlayer(position, turn) {
+        console.log("Player X: " + playerX);
+        console.log("Player O: " + playerO);
         var bit = 1;
         var posX = 0, posY = 0;
 
@@ -76,6 +78,9 @@
             drawPlayer(posX, posY, 'X');
         }
 
+        console.log("Player X: " + playerX);
+        console.log("Player O: " + playerO);
+
     }
 
     function drawPlayer(x, y, player) {
@@ -97,7 +102,6 @@
             context.lineTo(endX, endY);
             context.moveTo(startX, endY);
             context.lineTo(endX, startY);
-
         }
         else {
             context.strokeStyle = '#00f';
@@ -119,22 +123,175 @@
 
         if (isEmpty(playerX, playerO, bit)) {
             markPlayer(bit, 'X');
-
-
-
-
             
+            if(checkWinner(playerX, true)) {
+                    alert("Congratulations Player X!");
+                    setTimeout(restart, 4000);
+            }
+            else 
+            {
+                if (!checkTie) {
+                    play();
+
+                    if (!checkTie()) {
+                        if(checkWinner(playerO, true)) {
+                            alert("Congratulations Player O!");
+                            setTimeout(restart, 4000);
+                            }
+                            else 
+                            {
+                              checkTie();
+                            }
+                        }
+                }
+            }
+
+            if (!checkTie()) {
+                if(checkWinner(playerX)) {
+                    alert("Congratulations Player X!");
+                    setTimeout(restart, 4000);
+                }
+                else {
+                    play();
+
+                    if (!checkTie()) {
+                        if(checkWinner(playerO)) {
+                        alert("Congratulations Player O!");
+                        setTimeout(restart, 4000);
+                        }
+                    }
+                }
+            }
         }
 
+    }
 
-        
-        //markPlayer(bit, 'O');
-
+    function play() {
+        var bestOption = simulate(playerO, playerX);
+        markPlayer(bestOption, 'O');
     }
 
     function isEmpty(playerX, playerO, bit) {
         return ((playerX & bit) == 0) && ((playerO & bit) == 0);
     }
+
+    function checkTie(){
+        if ((playerX | playerO) == 0x1FF) {
+            alert('The game ends with a tie!!!');
+            setTimeout(restart, 4000);
+            return true;
+        }
+
+        return false;
+
+    }
+
+    function drawWinner(position) {
+        switch(position) {
+            case 1:
+                context.beginPath();
+                context.strokeStyle = '#0f0';
+                context.moveTo(width / 6, 5 * height / 6);
+                context.lineTo(5 * width / 6, 5 * height / 6);
+                context.stroke();
+                context.closePath();
+            break;
+            default:
+                break;
+        }
+    }
+
+    function checkWinner(player, manualPlay = false) {
+        var position = 0;
+
+        if ((player | 0x1C0) == player) {
+            position = 1;
+        }
+        if (manualPlay && position > 0)
+        {
+            drawWinner(position)
+            return true;
+        }
+
+        return (((player | 0x1C0) == player) || ((player | 0x38) == player) ||
+                 ((player | 0x7) == player) || ((player | 0x124) == player) || 
+                 ((player | 0x92) == player) || ((player | 0x49) == player) || 
+                 ((player | 0x111) == player) || ((player | 0x54) == player));
+    }
+
+    function restart() {
+        context.clearRect(0, 0, width, height);
+        playerO = 0;
+        playerX = 0;
+        displayBoard();
+    }
+
+    function determine(playerO, playerX, player, bit, ratio) {
+   if (player == 'O') {
+	playerO = playerO | bit;
+   } else {
+	playerX = playerX | bit;
+   }
+
+   if (checkWinner(playerO)) {
+      ratio *= 1.1; 
+      return ratio;
+
+   } else if (checkWinner(playerX)) {       
+      ratio *= 0.7; 
+      return ratio;
+
+   } else {
+	var best = 0;
+	ratio *= 0.6; 
+
+	for (var i= 0; i < 9; i++) {
+	   if (isEmpty(playerX, playerO, 1 << i)) {
+               var newRatio = determine(playerO, playerX, player == 'O' ? 'X' : 'O', 1 << i, ratio);
+
+               if (best == 0 || best < newRatio) {
+		  best = newRatio;
+               }
+	  }
+ 	}
+
+	return best;
+   }
+}
+
+function simulate(playerO, playerX) {
+   var ratio = 0;
+ 
+   var bit = 0;
+   for (var i= 0; i < 9; i++) {
+        var cBit = 1 << i;
+
+	if (isEmpty(playerX, playerO, cBit)) {
+           if (checkWinner(playerO | cBit)) {
+	      bit = cBit;
+	      break;
+	   } else if (checkWinner(playerX | cBit)) {
+	      bit = cBit;
+	   } 
+	}
+   }
+   
+   if (bit == 0) {
+      for (var i= 0; i < 9; i++) {
+	  var cBit = 1 << i;
+
+	  if (isEmpty(playerX, playerO, cBit)) {
+	      var result = determine(playerO, playerX, 'X', 0, 1)
+	      if (ratio == 0 || ratio < result) {
+	         ratio = result;
+	         bit = cBit;
+	      }
+	   }
+       }
+   }	
+   return bit;
+}
+
 
 </script>
 
