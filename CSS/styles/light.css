@@ -1,0 +1,45 @@
+body {
+    background-color: lightblue;
+}
+
+h1 {
+    color: #000;
+    text-align: center;
+}
+
+p {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 24px;
+    color: darkblue;
+}
+
+#C1 {
+    font-size: 18px;
+}
+
+#C2 {
+    font-size: 20px;
+}
+
+#C3 {
+    font-size: 22px;
+}
+
+#C4 {
+    font-size: 24px;
+}
+
+.grade {
+    width: 500px;
+    height: 25px;
+    border: 1px solid #ccc;
+    border-radius: 0px;
+    vertical-align: middle;
+}
+
+input[type="tel"] {
+    width: 150px;
+    display: block;
+    margin-bottom: 10px;
+    background-color: blueviolet;
+}
