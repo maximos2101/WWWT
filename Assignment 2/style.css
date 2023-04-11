@@ -1,0 +1,134 @@
+body {
+    color: rgb(93, 179, 255);
+    font-size: 1em;
+}
+
+.roundedcorners {
+    background: green;
+    text-align: center;
+    border-radius: 10px;
+    width: 300px;
+    height: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.backgroundgradients {
+    height: calc(50em);
+    width: calc(1000px);
+    margin-left: auto;
+    margin-right: auto;
+    text-align:justify;
+    background-image:repeating-radial-gradient(rgb(0, 229, 255) 60%, blue 30%, rgb(0, 0, 132) 70%); 
+}
+
+.shadows {
+    text-shadow: 2px 2px 5px rgb(255, 0, 0);
+    box-shadow: 10px 10px 8px 10px #888888;
+    background-color: rgb(0, 10, 191);
+    width: 300px;
+    height: 150px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.transform2d {
+    background-color: chocolate;
+    margin-top: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+    width: fit-content;
+    text-align: center;
+}
+.transform2d:hover {
+    transform: scale(3, 3);
+}
+.transform2d:active {
+    transform: rotate(180deg);
+}
+
+.transform3d {
+    background-color:aqua;
+    margin-top: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+    width: fit-content;
+    text-align: center;
+}
+.transform3d:hover {
+    transform: rotate3d(0,0,25,25deg);
+}
+.transform3d:active {
+    transition-duration: 2s;
+    transform: rotateY(120deg);
+}
+
+.transitions {
+    background-color:darkgreen;
+    margin-top: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+    width: fit-content;
+    text-align: center;
+}
+.transitions:hover {
+    transition-delay: 1s;
+    transition-timing-function: ease;
+    transition-duration: 5s;
+    transform: rotateY(360deg);
+}
+
+.animations {
+    animation-name: jumping-card;
+    animation-duration: 2s;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease;
+
+    border-radius: 10px;
+    background-color: hotpink;
+    margin-top: 200px;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    color: black;
+}
+@keyframes jumping-card {
+    from {
+        background-color:violet;
+        border-radius: 100px;
+        width: 100px;
+        height: 100px;
+        text-align: bottom;
+    }
+
+    to {
+        background-color:yellow;
+        border-radius: 1000px;
+        width: 600px;
+        height: 400px;
+        text-align:end;
+    }
+}
+
+.columns {
+    color: black;
+    column-count: 3;
+    column-width: 100px;
+    column-span: all;
+    column-gap: 40px;
+    column-rule-style: solid;
+    column-rule-width: 3px;
+    column-rule-color: rgb(255, 0, 25);
+    column-fill:auto;
+    
+}
+h4 {
+    column-span: all;
+    text-align: center;
+}
