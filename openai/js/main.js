@@ -12,7 +12,7 @@ buttonAI.onclick = async function (event) {
         method: 'POST', 
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer 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'
+            'Authorization': 'Bearer API-KEY'
         },
         body: JSON.stringify({
             "model": "text-davinci-003",
