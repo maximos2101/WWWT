@@ -1,3 +1,6 @@
+//REMEMBER TO REPLACE BOTH "APIKEY" STRINGS TO YOUR OPENAI API KEY FOR EACH OF THE BUTTONS EVENTS (TEXT AND IMG).
+//THE SAME API KEY CAN BE USED TWICE
+
 const inputText = document.querySelector("#inputPrompt")
 const outputText = document.querySelector("#outputResult")
 const buttonAI = document.querySelector("#buttonAI")
@@ -16,7 +19,7 @@ buttonAI.onclick = async function (event) {
         method: 'POST', 
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer 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'
+            'Authorization': 'Bearer APIKEY'
         },
         body: JSON.stringify({
             "model": "text-davinci-003",
@@ -45,7 +48,7 @@ buttonAIIMG.onclick = async function (event) {
         method: 'POST', 
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer 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'
+            'Authorization': 'Bearer APIKEY'
         },
         body: JSON.stringify({
             "model": "image-alpha-001",

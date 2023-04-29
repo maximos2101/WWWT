@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+</head>
+<body>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="#">News</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Home</li>
+        </ol>
+    </nav>
+
+    <div class="accordion" id="main">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="first">
+                <button class="accordion-button" type="button" 
+                data-bs-target="#content1" aria-expanded="true" 
+                aria-controls="content1" data-bs-toggle="collapse">Hockey News
+                </button>
+            </h2>
+            <div id="content1" class="accordion-collapse collapse show" aria-labelledby="first" data-bs-parent="main">
+                <div class="accordion-body">
+                    <strong>Yesterday, the Zlin hockey team won the championship.</strong>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="second">
+                <button class="accordion-button" type="button" 
+                data-bs-target="#content2" aria-expanded="false" 
+                aria-controls="content2" data-bs-toggle="collapse">Football News
+                </button>
+            </h2>
+            <div id="content2" class="accordion-collapse collapse" aria-labelledby="second" data-bs-parent="main">
+                <div class="accordion-body">
+                    <strong>Today, the Zlin football team won the championship.</strong>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+
+        </div>
+        
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col col-md-2 col-sm-3 col-12">First column</div>
+            <div class="col col-md-6 col-sm-3 col-12">Second content</div>
+            <div class="col col-md-2 col-sm-3 col-12">Third content</div>
+            <div class="col col-3">Fourth element</div>
+        </div>      
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <button type="button" class="btn btn-default">Default button</button>
+                <button type="button" class="btn btn-primary">Primary button</button>
+                <button type="button" class="btn btn-success">All good!</button>
+                <button type="button" class="btn btn-danger">All bad!</button>
+                <button type="button" class="btn btn-warning">Watch out!</button>
+                <button type="button" class="btn btn-link">Click here!</button>
+                <button type="button" class="btn btn-info">Beautiful information</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="alert alert-primary" role="alert">A primary alert has appeared!</div>
+            </div>
+            <div class="col-12">
+                <div class="alert alert-secondary" role="alert">A not important alert has appeared!</div>
+            </div>
+            <div class="col-12">
+                <div class="alert alert-success" role="alert">Success!</div>
+            </div>
+            <div class="col-12">
+                <div class="alert alert-danger" role="alert">Danger!</div>
+            </div>
+            <div class="col-12">
+                <div class="alert alert-warning" role="alert">Warning!</div>
+            </div>
+            <div class="col-12">
+                <div class="alert alert-light" role="alert">OooOooh nice!</div>
+            </div>
+            <div class="col-12">
+                <div class="alert alert-dark" role="alert">Scaryyy!</div>
+            </div>
+            <div class="col-12">
+                <div class="alert alert-info" role="alert">Wow, informative!</div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+</body>
+</html>
